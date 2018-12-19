@@ -25,7 +25,7 @@ var diffInternal = function(a,b,acc,base) {
 
                 var anInner=an,bnInner=bn
                 while(anInner > indexes.a && bnInner > indexes.b) {
-                    if(true || similar(a[anInner], b[bnInner])) {
+                    if(similar(a[anInner], b[bnInner])) {
                         // get change for that element
                         diffInternal(a[anInner],b[bnInner],acc, base.concat([anInner]))
                         anInner--; bnInner--;

@@ -84,6 +84,18 @@ tape("a simple change creates a simple diff", t => {
       }]
   )
 
+  expectChanges(t,
+    {arr: [1, 2]},
+    {arr: [1, 2, 3, 4]},
+    [
+      {
+        type: "add",
+        path: ["arr"],
+        index: 2,
+        vals: [3, 4],
+      }]
+  )
+
   t.end()
 })
 
