@@ -1,21 +1,43 @@
-{"name":"odiff",
- "version":"1.2.0",
- "main":"odiff.js",
- "types": "odiff.d.ts",
- "description": "Get a list of differences between one javascript value and another.",
- "keywords": [
-    "diff", "difference", "change", "changes", "track", "compare", "change-tracking", "patch", "jsonpatch",
-    "object", "variable", "value", "json",
-    "deep", "recursive", "tree"
- ],
- "dependencies":{
- },
- "devDependencies": {
-     "deadunit": "",
-     "build-modules":"*"
- },
- "repository": {
-   "type": "git",
-   "url": "git://github.com/Tixit/odiff"
- }
+{
+  "name": "odiff",
+  "version": "1.2.0",
+  "main": "odiff.js",
+  "types": "odiff.d.ts",
+  "scripts": {
+    "test": "tape -r ts-node/register tape/*.ts",
+    "watch": "node -r ts-node/register node_modules/.bin/tape-watcher tape/*.ts"
+  },
+  "description": "Get a list of differences between one javascript value and another.",
+  "keywords": [
+    "diff",
+    "difference",
+    "change",
+    "changes",
+    "track",
+    "compare",
+    "change-tracking",
+    "patch",
+    "jsonpatch",
+    "object",
+    "variable",
+    "value",
+    "json",
+    "deep",
+    "recursive",
+    "tree"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@types/tape": "^4.2.32",
+    "build-modules": "*",
+    "deadunit": "",
+    "tape": "^4.9.1",
+    "tape-watcher": "^0.0.7",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Tixit/odiff"
+  }
 }
