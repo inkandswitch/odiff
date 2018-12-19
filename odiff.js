@@ -17,7 +17,7 @@ module.exports = function(a,b) {
 var diffInternal = function(a,b,acc,base) {
     if(a === b || Number.isNaN(a)&&Number.isNaN(b)) {
         return;
-    } else if(a instanceof Array && b instanceof Array) {
+    } else if(Array.isArray(a) && Array.isArray(b)) {
         var an=a.length-1,bn=b.length-1
         while(an >= 0 && bn >= 0) {     // loop backwards (so that making changes in order will work correctly)
             if(!equal(a[an], b[bn])) {
@@ -85,7 +85,7 @@ var diffInternal = function(a,b,acc,base) {
         if(a.getTime() !== b.getTime()) {
             set(acc, base, b)
         }
-    } else if(a instanceof Object && b instanceof Object) {
+    } else if(typeof a === "object" && typeof b === "object") {
         var keyMap = merge(arrayToMap(Object.keys(a)), arrayToMap(Object.keys(b)))
         for(var key in keyMap) {
             var path = base.concat([key])
@@ -181,8 +181,8 @@ function findMatchIndexes(compareFn, a,b, divergenceIndexA,divergenceIndexB, aSu
     // less than 2 changes, or
     // less than 10% different members
 function similar(a,b) {
-    if(a instanceof Array) {
-        if(!(b instanceof Array))
+    if(Array.isArray(a)) {
+        if(!(Array.isArray(b)))
             return false
 
         var tenPercent = a.length/10
@@ -199,8 +199,8 @@ function similar(a,b) {
         // else
         return true
 
-    } else if(a instanceof Object) {
-        if(!(b instanceof Object))
+    } else if(typeof a === "object") {
+        if(!(typeof b === "object"))
             return false
 
         var keyMap = merge(arrayToMap(Object.keys(a)), arrayToMap(Object.keys(b)))
@@ -229,8 +229,8 @@ function similar(a,b) {
 
 // compares arrays and objects for value equality (all elements and members must match)
 function equal(a,b) {
-    if(a instanceof Array) {
-        if(!(b instanceof Array))
+    if(Array.isArray(a)) {
+        if(!(Array.isArray(b)))
             return false
         if(a.length !== b.length) {
             return false
@@ -243,8 +243,8 @@ function equal(a,b) {
             // else
             return true
         }
-    } else if(a instanceof Object) {
-        if(!(b instanceof Object))
+    } else if(typeof a === "object") {
+        if(!(typeof b === "object"))
             return false
 
         var aKeys = Object.keys(a)
